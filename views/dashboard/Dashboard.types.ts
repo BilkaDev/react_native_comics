@@ -1,9 +1,9 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
-import { RootStackParamList } from '../../App'
+import { ComicsStackParams } from '../../App'
 import { AppRoute } from '../../AppRoute'
 
 export type DashboardScreenNavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
+  ComicsStackParams,
   AppRoute.dashboard
 >

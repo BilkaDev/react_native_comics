@@ -12,8 +12,6 @@ export type RootStackParamList = {
   [AppRoute.singleComic]: { comicId: string }
 }
 
-export const Stack = createNativeStackNavigator<RootStackParamList>()
-
 export type ComicsStackParams = {
   [AppRoute.dashboard]: undefined
   [AppRoute.singleComic]: {
