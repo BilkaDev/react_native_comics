@@ -1,23 +1,21 @@
 import { useNavigation } from '@react-navigation/native'
-import axios from 'axios'
 import { useMemo } from 'react'
 import { FlatList, Text, View } from 'react-native'
 import { useInfiniteQuery } from 'react-query'
 
+import { fetchComicRequestXkcd } from '../../api/comics'
 import { AppRoute } from '../../AppRoute'
-import { RenderComicsBasic } from '../../components/Comics/RenderComicsBasic/RenderComicsBasic'
+import { RenderComicsBasic } from '../../components/Comics/renderComicsBasic/RenderComicsBasic'
 
 import { styles } from './Dashboard.styles'
 import { DashboardScreenNavigationProp } from './Dashboard.types'
 
 export const Dashboard = () => {
   const navigation = useNavigation<DashboardScreenNavigationProp>()
+
   const { data, fetchNextPage, isSuccess, isFetchingNextPage } = useInfiniteQuery({
     queryKey: 'comics',
-    queryFn: async ({ pageParam }) => {
-      const res = await axios.get(`https://xkcd.com/${pageParam ? pageParam + '/' : ''}info.0.json`)
-      return res.data
-    },
+    queryFn: async ({ pageParam }) => fetchComicRequestXkcd(pageParam),
     getNextPageParam: (lastPage) => {
       const maxPages = 1
       const nextPage = lastPage.num - 1
@@ -31,7 +29,7 @@ export const Dashboard = () => {
       id: page.num.toString(),
       title: page.title,
       img: page.img,
-      onClick: () => navigation.navigate(AppRoute.singleComic, page.num.toString())
+      onClick: () => navigation.navigate(AppRoute.singleComic, { comicId: page.num.toString() })
     }))
   }, [data?.pages, isSuccess, navigation])
   if (!isSuccess) return null
