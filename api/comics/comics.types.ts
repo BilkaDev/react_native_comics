@@ -1,3 +1,14 @@
+export type SingleComicType = {
+  title: string
+  day: string
+  month: string
+  year: string
+  transcript: string
+  img: string
+  id: string
+  alt: string
+}
+
 export type ComicsXkcdType = {
   month: string
   num: number
