@@ -6,4 +6,5 @@ type ComicsBasic = {
   title: string
   img: string
   id: string
+  onClick: () => void
 }

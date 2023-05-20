@@ -1,4 +1,6 @@
 export enum AppRoute {
   dashboard = '/',
-  SingleComic = '/SingleComic'
+  singleComic = '/SingleComic'
 }
+
+export type AppRouteType = AppRoute

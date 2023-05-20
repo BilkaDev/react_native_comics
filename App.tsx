@@ -7,19 +7,24 @@ import { Dashboard } from './views/dashboard/Dashboard'
 
 import { AppRoute } from './AppRoute'
 
-const Stack = createNativeStackNavigator()
+export type RootStackParamList = {
+  [AppRoute.dashboard]: undefined
+  [AppRoute.singleComic]: { comicId: string }
+}
+
+export const Stack = createNativeStackNavigator<RootStackParamList>()
 
 export default function App() {
   return (
     <AppProviders>
-      <Stack.Navigator initialRouteName="Dashboard">
+      <Stack.Navigator initialRouteName={AppRoute.dashboard}>
         <Stack.Screen
           name={AppRoute.dashboard}
           component={Dashboard}
           options={{ title: 'Comics' }}
         />
         <Stack.Screen
-          name={AppRoute.SingleComic}
+          name={AppRoute.singleComic}
           component={SingleComic}
           options={{ title: 'Single comic' }}
         />
