@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { FlatList, Text, View } from 'react-native'
 import { useInfiniteQuery } from 'react-query'
 
@@ -12,6 +12,7 @@ import { styles } from './Dashboard.styles'
 import { DashboardScreenNavigationProp } from './Dashboard.types'
 
 export const Dashboard = () => {
+  const [selectedComics, setSelectedComics] = useState<string>()
   const navigation = useNavigation<DashboardScreenNavigationProp>()
 
   const { data, fetchNextPage, isSuccess, isFetchingNextPage } = useInfiniteQuery({
@@ -23,7 +24,7 @@ export const Dashboard = () => {
       return nextPage < maxPages ? undefined : nextPage
     }
   })
-
+  console.log(selectedComics)
   const comics = useMemo(() => {
     if (!isSuccess) return []
     return data?.pages.flatMap((page: any) => ({
@@ -37,7 +38,7 @@ export const Dashboard = () => {
 
   return (
     <View style={styles.container}>
-      <SelectComics></SelectComics>
+      <SelectComics onClick={setSelectedComics} />
       <FlatList
         data={comics}
         renderItem={RenderComicsBasic}
