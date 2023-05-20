@@ -7,11 +7,6 @@ import { SingleComic } from './views/singleComic/SingleComic'
 
 import { AppRoute } from './AppRoute'
 
-export type RootStackParamList = {
-  [AppRoute.dashboard]: undefined
-  [AppRoute.singleComic]: { comicId: string }
-}
-
 export type ComicsStackParams = {
   [AppRoute.dashboard]: undefined
   [AppRoute.singleComic]: {

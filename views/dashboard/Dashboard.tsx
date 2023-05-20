@@ -6,6 +6,7 @@ import { useInfiniteQuery } from 'react-query'
 import { fetchComicRequestXkcd } from '../../api/comics'
 import { AppRoute } from '../../AppRoute'
 import { RenderComicsBasic } from '../../components/Comics/renderComicsBasic/RenderComicsBasic'
+import { SelectComics } from '../../components/SelectComics/SelectComics'
 
 import { styles } from './Dashboard.styles'
 import { DashboardScreenNavigationProp } from './Dashboard.types'
@@ -36,6 +37,7 @@ export const Dashboard = () => {
 
   return (
     <View style={styles.container}>
+      <SelectComics></SelectComics>
       <FlatList
         data={comics}
         renderItem={RenderComicsBasic}
