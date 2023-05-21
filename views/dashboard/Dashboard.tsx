@@ -1,7 +1,7 @@
-import { FlatList, Text, View } from 'react-native'
+import { View } from 'react-native'
 
 import { useComics } from '../../api/comics/hooks'
-import { RenderComicsBasic } from '../../components/Comics/renderComicsBasic/RenderComicsBasic'
+import { ComicsList } from '../../components/Comics/comicsList/ComicsList'
 import { SelectComics } from '../../components/SelectComics/SelectComics'
 
 import { styles } from './Dashboard.styles'
@@ -12,14 +12,11 @@ export const Dashboard = () => {
   return (
     <View style={styles.container}>
       <SelectComics onClick={setDomain} />
-      <FlatList
-        data={comics}
-        renderItem={RenderComicsBasic}
-        keyExtractor={(item) => item.id}
-        onEndReached={() => fetchNextPage()}
-        onEndReachedThreshold={0.25}
-        ListFooterComponent={isFetchingNextPage ? <Text>Loading more...</Text> : null}
-      ></FlatList>
+      <ComicsList
+        comics={comics}
+        fetchNextPage={fetchNextPage}
+        isFetchingNextPage={isFetchingNextPage}
+      />
     </View>
   )
 }

@@ -9,6 +9,13 @@ export type SingleComicType = {
   alt: string
 }
 
+export type ComicsBasicType = {
+  id: string
+  title: string
+  img: string
+  onClick: () => void
+}
+
 export type ComicsXkcdType = {
   month: string
   num: number

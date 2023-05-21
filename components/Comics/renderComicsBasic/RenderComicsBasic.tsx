@@ -8,7 +8,7 @@ export const RenderComicsBasic = ({ item }: RenderComicsBasicProps) => {
     <View style={styles.container}>
       <TouchableOpacity onPress={item.onClick}>
         <Text style={styles.title}>{item.title}</Text>
-        <Image source={{ uri: item.img }} style={{ width: '70%', aspectRatio: 1 }} />
+        <Image resizeMode="contain" style={styles.image} source={{ uri: item.img }} />
       </TouchableOpacity>
     </View>
   )

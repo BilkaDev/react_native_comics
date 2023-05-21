@@ -1,6 +1,6 @@
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 
-import { AvailableComicsDomain } from '../../api/comics/avaibleComics'
+import { AvailableComicsDomain } from '../../api/comics'
 
 import { styles } from './SelectComics.styles'
 import { SelectComicsProps } from './SelectComics.types'

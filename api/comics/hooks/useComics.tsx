@@ -7,7 +7,7 @@ import { DashboardScreenNavigationProp } from '../../../views/dashboard/Dashboar
 
 import { availableComics, AvailableComicsDomain, DEFAULT_COMICS_DOMAIN } from '../avaibleComics'
 import { fetchComicRequestXkcd } from '../comics.request'
-import { SingleComicType } from '../comics.types'
+import { ComicsBasicType, SingleComicType } from '../comics.types'
 
 export const useComics = () => {
   const [domain, setDomain] = useState<AvailableComicsDomain>(DEFAULT_COMICS_DOMAIN)
@@ -53,12 +53,15 @@ export const useComics = () => {
 
   const comics = useMemo(() => {
     if (!isSuccess) return []
-    return data?.pages.flatMap((page) => ({
-      id: page.id,
-      title: page.title,
-      img: page.img,
-      onClick: () => navigation.navigate(AppRoute.singleComic, { comicId: page.id, domain })
-    }))
+    return data?.pages.flatMap(
+      (page) =>
+        ({
+          id: page.id,
+          title: page.title,
+          img: page.img,
+          onClick: () => navigation.navigate(AppRoute.singleComic, { comicId: page.id, domain })
+        } as ComicsBasicType)
+    )
   }, [data?.pages, domain, isSuccess, navigation])
 
   return { comics, isSuccess, fetchNextPage, isFetchingNextPage, domain, setDomain }
