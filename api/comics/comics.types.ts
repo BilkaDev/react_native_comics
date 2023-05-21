@@ -1,3 +1,5 @@
+
+
 export type SingleComicType = {
   title: string
   day: string
