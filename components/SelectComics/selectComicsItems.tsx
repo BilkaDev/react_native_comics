@@ -1,4 +1,4 @@
-import { availableComics, AvailableComicsDomain } from '../../api/comics/avaibleComics'
+import { availableComics, AvailableComicsDomain } from '../../api/comics'
 
 type SelectComicsItemsType = {
   domain: AvailableComicsDomain

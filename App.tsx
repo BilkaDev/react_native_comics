@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { StatusBar } from 'expo-status-bar'
 
+import { AvailableComicsDomain } from './api/comics'
 import { AppProviders } from './appProviders/AppProviders'
 import { Dashboard } from './views/dashboard/Dashboard'
 import { SingleComic } from './views/singleComic/SingleComic'
@@ -11,6 +12,7 @@ export type ComicsStackParams = {
   [AppRoute.dashboard]: undefined
   [AppRoute.singleComic]: {
     comicId: string
+    domain: AvailableComicsDomain
   }
 }
 

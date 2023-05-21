@@ -1,6 +1,6 @@
 import { Image, Text, View } from 'react-native'
 
-import { useSingleComic } from '../../api/comics/hooks/useSingleComic'
+import { useSingleComic } from '../../api/comics/hooks'
 
 import { styles } from './SingleComic.styles'
 import { SingleComicProps } from './SingleComic.types'

@@ -2,12 +2,12 @@ import { useNavigation } from '@react-navigation/native'
 import { useMemo, useState } from 'react'
 import { useInfiniteQuery } from 'react-query'
 
-import { AppRoute } from '../../AppRoute'
-import { DashboardScreenNavigationProp } from '../../views/dashboard/Dashboard.types'
+import { AppRoute } from '../../../AppRoute'
+import { DashboardScreenNavigationProp } from '../../../views/dashboard/Dashboard.types'
 
-import { availableComics, AvailableComicsDomain, DEFAULT_COMICS_DOMAIN } from './avaibleComics'
-import { fetchComicRequestXkcd } from './comics.request'
-import { SingleComicType } from './comics.types'
+import { availableComics, AvailableComicsDomain, DEFAULT_COMICS_DOMAIN } from '../avaibleComics'
+import { fetchComicRequestXkcd } from '../comics.request'
+import { SingleComicType } from '../comics.types'
 
 export const useComics = () => {
   const [domain, setDomain] = useState<AvailableComicsDomain>(DEFAULT_COMICS_DOMAIN)
@@ -57,9 +57,9 @@ export const useComics = () => {
       id: page.id,
       title: page.title,
       img: page.img,
-      onClick: () => navigation.navigate(AppRoute.singleComic, { comicId: page.id })
+      onClick: () => navigation.navigate(AppRoute.singleComic, { comicId: page.id, domain })
     }))
-  }, [data?.pages, isSuccess, navigation])
+  }, [data?.pages, domain, isSuccess, navigation])
 
   return { comics, isSuccess, fetchNextPage, isFetchingNextPage, domain, setDomain }
 }

@@ -1,6 +1,6 @@
 import { FlatList, Text, View } from 'react-native'
 
-import { useComics } from '../../api/comics/useComics'
+import { useComics } from '../../api/comics/hooks'
 import { RenderComicsBasic } from '../../components/Comics/renderComicsBasic/RenderComicsBasic'
 import { SelectComics } from '../../components/SelectComics/SelectComics'
 
