@@ -15,28 +15,33 @@ export const useComics = () => {
 
   const { fetchComic, getNextPageParam } = useMemo(() => {
     switch (domain) {
-      case availableComics.xkcd_com.domain:
+      case availableComics.xkcd_com.domain: {
         const getNextPageParam = (lastPage: SingleComicType) => {
           const maxPages = 1
           const nextPage = +lastPage.id - 1
           return nextPage < maxPages ? undefined : nextPage
         }
         return { fetchComic: fetchComicRequestXkcd, getNextPageParam }
-        break
-      case availableComics.example_com.domain:
+      }
+      case availableComics.example_com.domain: {
         return { fetchComic: fetchComicRequestXkcd, getNextPageParam: () => undefined }
+      }
 
-      case availableComics.example2_com.domain:
+      case availableComics.example2_com.domain: {
         return { fetchComic: fetchComicRequestXkcd, getNextPageParam: () => undefined }
+      }
 
-      case availableComics.example3_com.domain:
+      case availableComics.example3_com.domain: {
         return { fetchComic: fetchComicRequestXkcd, getNextPageParam: () => undefined }
+      }
 
-      case availableComics.example4_com.domain:
+      case availableComics.example4_com.domain: {
         return { fetchComic: fetchComicRequestXkcd, getNextPageParam: () => undefined }
+      }
 
-      default:
+      default: {
         return { fetchComic: fetchComicRequestXkcd, getNextPageParam: () => undefined }
+      }
     }
   }, [domain])
 
