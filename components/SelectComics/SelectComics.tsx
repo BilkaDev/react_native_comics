@@ -1,11 +1,13 @@
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 
+import { AvailableComicsDomain } from '../../api/comics/avaibleComics'
+
 import { styles } from './SelectComics.styles'
 import { SelectComicsProps } from './SelectComics.types'
 import { selectComicsItems } from './selectComicsItems'
 
 export const SelectComics = ({ onClick }: SelectComicsProps) => {
-  const handleImagePress = (domain: string) => {
+  const handleImagePress = (domain: AvailableComicsDomain) => {
     onClick(domain)
   }
   return (

@@ -5,17 +5,17 @@ import { useInfiniteQuery } from 'react-query'
 import { AppRoute } from '../../AppRoute'
 import { DashboardScreenNavigationProp } from '../../views/dashboard/Dashboard.types'
 
+import { availableComics, AvailableComicsDomain, DEFAULT_COMICS_DOMAIN } from './avaibleComics'
 import { fetchComicRequestXkcd } from './comics.request'
 import { SingleComicType } from './comics.types'
 
-type AvailableComicsDomain = string
 export const useComics = () => {
-  const [domain, setDomain] = useState<AvailableComicsDomain>('s')
+  const [domain, setDomain] = useState<AvailableComicsDomain>(DEFAULT_COMICS_DOMAIN)
   const navigation = useNavigation<DashboardScreenNavigationProp>()
 
   const { fetchComic, getNextPageParam } = useMemo(() => {
     switch (domain) {
-      case 'xkcd.com':
+      case availableComics.xkcd_com.domain:
         const getNextPageParam = (lastPage: SingleComicType) => {
           const maxPages = 1
           const nextPage = +lastPage.id - 1
@@ -23,16 +23,16 @@ export const useComics = () => {
         }
         return { fetchComic: fetchComicRequestXkcd, getNextPageParam }
         break
-      case 'test.com':
+      case availableComics.example_com.domain:
         return { fetchComic: fetchComicRequestXkcd, getNextPageParam: () => undefined }
 
-      case 'test4.com':
+      case availableComics.example2_com.domain:
         return { fetchComic: fetchComicRequestXkcd, getNextPageParam: () => undefined }
 
-      case 'test1.com':
+      case availableComics.example3_com.domain:
         return { fetchComic: fetchComicRequestXkcd, getNextPageParam: () => undefined }
 
-      case 'test2.com':
+      case availableComics.example4_com.domain:
         return { fetchComic: fetchComicRequestXkcd, getNextPageParam: () => undefined }
 
       default:

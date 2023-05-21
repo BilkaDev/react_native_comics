@@ -1,3 +1,5 @@
+import { AvailableComicsDomain } from '../../api/comics/avaibleComics'
+
 export type SelectComicsProps = {
-  onClick: (v: string) => void
+  onClick: (v: AvailableComicsDomain) => void
 }

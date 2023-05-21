@@ -19,7 +19,7 @@ export const example3_com = {
 } as const
 
 export const example4_com = {
-  domain: 'example_com',
+  domain: 'example4_com',
   logo: 'https://cdn.pixabay.com/photo/2016/06/09/17/45/hacker-1446193_640.jpg'
 } as const
 
@@ -31,5 +31,5 @@ export const availableComics = {
   example4_com
 }
 
-const DEFAULT_COMICS_DOMAIN = xkcd_com.logo
+export const DEFAULT_COMICS_DOMAIN = xkcd_com.domain
 export type AvailableComicsDomain = keyof typeof availableComics
