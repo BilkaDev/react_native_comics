@@ -1,20 +1,16 @@
 import { Image, Text, View } from 'react-native'
-import { useQuery } from 'react-query'
 
-import { fetchComicRequestXkcd } from '../../api/comics'
+import { useSingleComic } from '../../api/comics/hooks/useSingleComic'
 
 import { styles } from './SingleComic.styles'
 import { SingleComicProps } from './SingleComic.types'
 
 export const SingleComic = ({ route }: SingleComicProps) => {
   const comicId = route.params.comicId
+  const domain = route.params.domain
+  const { comic, isSuccess } = useSingleComic({ domain, comicId })
 
-  const { isSuccess, data: comic } = useQuery({
-    queryKey: ['comics', 'comicsId'],
-    queryFn: async () => fetchComicRequestXkcd(comicId)
-  })
-
-  if (!isSuccess) return null
+  if (isSuccess) return null
 
   return (
     <View style={styles.container}>
@@ -27,7 +23,7 @@ export const SingleComic = ({ route }: SingleComicProps) => {
       <Image
         resizeMode={'contain'}
         style={styles.image}
-        source={{ uri: comic.img }}
+        source={{ uri: comic?.img }}
         alt={comic?.alt ?? 'comic image'}
       />
       {comic?.transcript && <Text style={styles.text}>Transcript: {comic.transcript}</Text>}
