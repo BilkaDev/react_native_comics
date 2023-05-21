@@ -15,7 +15,7 @@ module.exports = {
     "public",
     "dist",
     "coverage",
-    "build"
+    "build",
   ],
   settings: {
     'import/resolver': {
