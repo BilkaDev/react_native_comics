@@ -19,11 +19,17 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold'
   },
-  image: {
-    width: '100%',
-    aspectRatio: 1
+
+  textContent: {
+    marginBottom: 50
+  },
+
+  transcript: {
+    fontWeight: 'bold',
+    fontSize: 18
   },
   text: {
+    marginTop: 5,
     fontSize: 18
   }
 })
