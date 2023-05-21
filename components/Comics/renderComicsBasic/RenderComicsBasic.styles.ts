@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center'
   },
   image: {
-    width: '100%',
+    width: '80%',
     aspectRatio: 1
   }
 })
