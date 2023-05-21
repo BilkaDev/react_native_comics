@@ -3,6 +3,8 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
   container: {
     marginTop: 20,
+    marginLeft: 20,
+    marginRight: 20,
     alignItems: 'center',
     justifyContent: 'flex-start'
   },
@@ -18,7 +20,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   image: {
-    width: '90%',
+    width: '100%',
     aspectRatio: 1
   },
   text: {

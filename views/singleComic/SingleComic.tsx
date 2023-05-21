@@ -10,7 +10,7 @@ export const SingleComic = ({ route }: SingleComicProps) => {
   const domain = route.params.domain
   const { comic, isSuccess } = useSingleComic({ domain, comicId })
 
-  if (isSuccess) return null
+  if (!isSuccess) return null
 
   return (
     <View style={styles.container}>
